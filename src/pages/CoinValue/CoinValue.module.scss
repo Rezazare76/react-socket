@@ -1,0 +1,21 @@
+table {
+  border: 1px solid var(--gray);
+  box-shadow: 0 0 10px var(--gray);
+  img {
+    margin-right: 10px;
+  }
+  th,
+  td {
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--gray);
+  }
+  tr:last-child td {
+    border: none;
+  }
+  tr:last-child td {
+    border: none;
+  }
+  tr:not(:first-child):hover {
+    background-color: var(--gray);
+  }
+}
