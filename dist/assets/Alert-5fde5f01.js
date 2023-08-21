@@ -1,1 +1,0 @@
-import{r as e,j as s}from"./index-cee6bd86.js";const o=({message:t,success:r})=>s.jsx("span",{className:`alert p-2 text-center position-fixed transition bg-primary text-secondary rounded-1-right ${t&&"true"} ${r&&"success"}`,children:t}),a=e.memo(o);export{a as default};
