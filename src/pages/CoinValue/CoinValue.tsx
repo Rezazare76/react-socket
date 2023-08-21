@@ -65,40 +65,44 @@ const CoinValue: React.FC = () => {
     <table
       className={`${style.table} p-2 text-center rounded-3 overflow-hidden`}
     >
-      <tr className="vertical-top">
-        <th>Names</th>
-        <th>Current Price</th>
-        <th> Previous Price</th>
-        <th>24h Change</th>
-        <th>24h High</th>
-        <th>24h Low</th>
-      </tr>
-      {Object.keys(priceData).map((symbol) => (
-        <tr key={symbol}>
-          <td className="d-flex align-items-center">
-            <img
-              src={symbols[symbol]}
-              alt={symbol}
-              width="25px"
-              className="rounded-circle"
-            />
-            {symbol}
-          </td>
-          <td
-            className={`${
-              priceData[symbol].current > priceData[symbol].prev
-                ? "text-success "
-                : "text-danger"
-            }`}
-          >
-            {priceData[symbol].current}
-          </td>
-          <td>{priceData[symbol].prev}</td>
-          <td>{priceData[symbol].changeDay}</td>
-          <td>{priceData[symbol].highDay}</td>
-          <td>{priceData[symbol].LowDay}</td>
+      <thead>
+        <tr className="vertical-top">
+          <th>Names</th>
+          <th>Current Price</th>
+          <th> Previous Price</th>
+          <th>24h Change</th>
+          <th>24h High</th>
+          <th>24h Low</th>
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {Object.keys(priceData).map((symbol) => (
+          <tr key={symbol}>
+            <td className="d-flex align-items-center">
+              <img
+                src={symbols[symbol]}
+                alt={symbol}
+                width="25px"
+                className="rounded-circle"
+              />
+              {symbol}
+            </td>
+            <td
+              className={`${
+                priceData[symbol].current > priceData[symbol].prev
+                  ? "text-success "
+                  : "text-danger"
+              }`}
+            >
+              {priceData[symbol].current}
+            </td>
+            <td>{priceData[symbol].prev}</td>
+            <td>{priceData[symbol].changeDay}</td>
+            <td>{priceData[symbol].highDay}</td>
+            <td>{priceData[symbol].LowDay}</td>
+          </tr>
+        ))}
+      </tbody>
     </table>
   );
 };
