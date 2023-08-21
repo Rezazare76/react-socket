@@ -11,9 +11,6 @@ This project is a real-time cryptocurrency price tracker built with React, TypeS
 - Vite
 - HTML5, Scss
 
-🔗 Live Demo:
-(https://your-live-demo-url.com)
-
 🛠️ Installation and Usage:
 
 1. Clone the repository: `git clone https://github.com/Rezazare76/react-socket.git`
