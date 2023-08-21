@@ -11,6 +11,7 @@ import doge from "../../assets/images/doge.svg";
 import link from "../../assets/images/link.svg";
 import waves from "../../assets/images/waves.svg";
 import xrp from "../../assets/images/xrp.svg";
+import loadingIcon from "../../assets/gif/wired-outline-331-loader-2.gif";
 // coins list
 const symbols: { [index: string]: string } = {
   BTCUSDT: bitcoin,
@@ -27,6 +28,7 @@ const symbols: { [index: string]: string } = {
 
 const CoinValue: React.FC = () => {
   const [priceData, setPriceData] = useState<CoinValueState>({}); // State to store current prices for each symbol
+  const [loading, setLoading] = useState(true);
   const prevPriceDataRef = useRef<{ [symbol: string]: prevRef }>({}); // Ref to store previous prices
   useEffect(() => {
     const ws = new WebSocket("wss://stream.binance.com:9443/ws/!ticker@arr");
@@ -34,7 +36,7 @@ const CoinValue: React.FC = () => {
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
       const updatedPriceData: CoinValueState = {};
-
+      if (data) setLoading(false);
       for (const entry of data) {
         if (symbols[entry.s]) {
           const symbol = entry.s;
@@ -76,6 +78,18 @@ const CoinValue: React.FC = () => {
         </tr>
       </thead>
       <tbody>
+        {loading && (
+          <tr>
+            <td colSpan={6}>
+              <img
+                src={loadingIcon}
+                alt="loading.gif"
+                width="100px"
+                height="100px"
+              />
+            </td>
+          </tr>
+        )}
         {Object.keys(priceData).map((symbol) => (
           <tr key={symbol}>
             <td className="d-flex align-items-center">
